@@ -67,14 +67,14 @@ rm -rf $RPM_BUILD_ROOT
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/magnifier
-%attr(755,root,root) %{_libdir}/libgnome-mag.so.*
+%attr(755,root,root) %{_libdir}/libgnome-mag.so.*.*.*
 %{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
 %{_datadir}/idl/%{name}-1.0
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/libgnome-mag.so
+%attr(755,root,root) %{_libdir}/libgnome-mag.so
 %{_libdir}/libgnome-mag.la
 %{_includedir}/%{name}-1.0
 %{_pkgconfigdir}/*
