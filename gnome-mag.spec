@@ -43,6 +43,18 @@ gnome-mag headers.
 %description devel -l pl
 Pliki nag³ówkowe gnome-mag.
 
+%package static
+Summary:	Static gnome-mag library
+Summary(pl):	Statyczna biblioteka gnome-mag
+Group:		Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
+
+%description static
+Static gnome-mag library.
+
+%description static -l pl
+Statyczna biblioteka gnome-mag.
+
 %prep
 %setup -q
 %patch0 -p1
@@ -55,7 +67,9 @@ mv po/{no,nb}.po
 %{__aclocal} -I %{_aclocaldir}/gnome2-macros
 %{__automake}
 %{__autoconf}
-%configure
+%configure \
+	--enable-static
+
 %{__make}
 
 %install
@@ -86,3 +100,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgnome-mag.la
 %{_includedir}/%{name}-1.0
 %{_pkgconfigdir}/*
+
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
