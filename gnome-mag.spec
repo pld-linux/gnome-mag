@@ -1,4 +1,4 @@
-Summary:	Gnome Magnifier
+Summary:	GNOME Magnifier
 Summary(pl):	Lupa GNOME
 Name:		gnome-mag
 Version:	0.10.2
@@ -21,7 +21,7 @@ BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Gnome magnifier.
+GNOME magnifier.
 
 %description -l pl
 Lupa GNOME.
