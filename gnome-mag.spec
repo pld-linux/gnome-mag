@@ -13,6 +13,7 @@ BuildRequires:	ORBit2-devel >= 2.8.0
 BuildRequires:	at-spi-devel
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gnome-common
 BuildRequires:	glib2-devel
 BuildRequires:	gtk+2-devel >= 2.2.3
 BuildRequires:	intltool >= 0.25
