@@ -1,0 +1,22 @@
+diff -urN gnome-mag-0.9.1.orig/magnifier/Makefile.am gnome-mag-0.9.1/magnifier/Makefile.am
+--- gnome-mag-0.9.1.orig/magnifier/Makefile.am	Thu Mar 27 12:58:20 2003
++++ gnome-mag-0.9.1/magnifier/Makefile.am	Thu Mar 27 15:51:14 2003
+@@ -24,8 +24,7 @@
+ 	zoom-region-private.h \
+ 	magnifier.h \
+ 	GNOME_Magnifier.h \
+-	GNOME_Magnifier-skels.c \
+-	GNOME_Magnifier-common.c
++	GNOME_Magnifier-skels.c 
+ 
+ INCLUDES = \
+ 	$(DEPS_CFLAGS)		\
+@@ -41,7 +40,7 @@
+ IDL = $(top_srcdir)/idl/GNOME_Magnifier.idl
+ 
+ BUILT_SOURCES = $(IDL_OUT)
+-CLEANFILES+=$(IDL_OUT)
++CLEANFILES=$(IDL_OUT)
+ 
+ magnifier.h : GNOME_Magnifier.h
+ 
