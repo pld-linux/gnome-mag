@@ -33,7 +33,6 @@ Summary(pl):	Pliki nag³ówkowe gnome-mag
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 2.12.1
-Requires:	glib2-devel >= 1:2.6.3
 Requires:	gtk+2-devel >= 2:2.6.4
 Requires:	libbonobo-devel >= 2.8.1
 
