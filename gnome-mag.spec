@@ -8,6 +8,7 @@ Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/%{name}/0.10/%{name}-%{version}.tar.bz2
 # Source0-md5:	bcfd31d2d56d399b4f2087eaf3a8fc04
 Patch0:		%{name}-am.patch
+Patch1:		%{name}-locale-names.patch
 URL:		http://developer.gnome.org/projects/gap/
 BuildRequires:	ORBit2-devel >= 2.8.0
 BuildRequires:	at-spi-devel
@@ -31,7 +32,7 @@ Lupa GNOME.
 Summary:	gnome-mag headers
 Summary(pl):	Pliki nag³ówkowe gnome-mag
 Group:		X11/Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 2.8.0
 Requires:	glib2-devel >= 2.2.0
 Requires:	libbonobo-devel >= 2.4.0
@@ -45,6 +46,9 @@ Pliki nag³ówkowe gnome-mag.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
+
+mv po/{no,nb}.po
 
 %build
 %{__libtoolize}
