@@ -1,21 +1,21 @@
 Summary:	GNOME Magnifier
 Summary(pl):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.12.2
+Version:	0.12.4
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-mag/0.12/%{name}-%{version}.tar.bz2
-# Source0-md5:	14d0915a0174861312f98106e2d7fbd2
+# Source0-md5:	5616186b04c2e8ad001dd61707a3fb3a
 URL:		http://developer.gnome.org/projects/gap/
-BuildRequires:	ORBit2-devel >= 2.12.1
+BuildRequires:	ORBit2-devel >= 2.14.0
 BuildRequires:	at-spi-devel >= 1.6.3
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.8.0
 BuildRequires:	gtk+2-devel >= 2:2.6.4
 BuildRequires:	intltool >= 0.33
-BuildRequires:	libbonobo-devel >= 2.8.1
+BuildRequires:	libbonobo-devel >= 2.14.0
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -31,9 +31,9 @@ Summary:	gnome-mag headers
 Summary(pl):	Pliki nag³ówkowe gnome-mag
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 2.12.1
+Requires:	ORBit2-devel >= 2.14.0
 Requires:	gtk+2-devel >= 2:2.6.4
-Requires:	libbonobo-devel >= 2.8.1
+Requires:	libbonobo-devel >= 2.14.0
 
 %description devel
 gnome-mag headers.
@@ -70,7 +70,8 @@ Statyczna biblioteka gnome-mag.
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT
+	DESTDIR=$RPM_BUILD_ROOT \
+	referencedir=%{_gtkdocdir}
 
 rm -r $RPM_BUILD_ROOT%{_datadir}/locale/no
 
@@ -96,6 +97,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libgnome-mag.la
 %{_includedir}/%{name}-1.0
 %{_pkgconfigdir}/*
+%{_gtkdocdir}/*
 
 %files static
 %defattr(644,root,root,755)
