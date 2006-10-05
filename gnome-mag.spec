@@ -79,9 +79,6 @@ rm -rf $RPM_BUILD_ROOT
 # no *.la for orbit modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/orbit-2.0/*.{la,a}
 
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/tk
-rm -r $RPM_BUILD_ROOT%{_datadir}/locale/ug
-
 %find_lang %{name}
 
 %clean
