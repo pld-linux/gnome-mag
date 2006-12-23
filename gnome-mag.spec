@@ -1,26 +1,26 @@
 Summary:	GNOME Magnifier
 Summary(pl):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.13.1
+Version:	0.14.0
 Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-mag/0.13/%{name}-%{version}.tar.bz2
-# Source0-md5:	4b16b95fd978640c103a6f9cf452c579
+Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-mag/0.14/%{name}-%{version}.tar.bz2
+# Source0-md5:	012ad052da51031eca1f521942f865f2
 URL:		http://developer.gnome.org/projects/gap/
-BuildRequires:	ORBit2-devel >= 1:2.14.2
-BuildRequires:	at-spi-devel >= 1.7.10
+BuildRequires:	ORBit2-devel >= 1:2.14.4
+BuildRequires:	at-spi-devel >= 1.7.12
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gtk+2-devel >= 2:2.10.1
-BuildRequires:	intltool >= 0.35
-BuildRequires:	libbonobo-devel >= 2.15.0
+BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	intltool >= 0.35.0
+BuildRequires:	libbonobo-devel >= 2.16.0
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXfixes-devel
-Requires:	libbonobo >= 2.15.0
+Requires:	libbonobo >= 2.16.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,9 +34,9 @@ Summary:	gnome-mag headers
 Summary(pl):	Pliki nag³ówkowe gnome-mag
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	ORBit2-devel >= 1:2.14.2
-Requires:	gtk+2-devel >= 2:2.10.1
-Requires:	libbonobo-devel >= 2.15.0
+Requires:	ORBit2-devel >= 1:2.14.4
+Requires:	gtk+2-devel >= 2:2.10.6
+Requires:	libbonobo-devel >= 2.16.0
 
 %description devel
 gnome-mag headers.
@@ -74,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	referencedir=%{_gtkdocdir}
+	referencedir=%{_gtkdocdir}/%{name}
 
 # no *.la for orbit modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/orbit-2.0/*.{la,a}
@@ -92,6 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/magnifier
 %attr(755,root,root) %{_libdir}/libgnome-mag.so.*.*.*
 %attr(755,root,root) %{_libdir}/orbit-2.0/*.so*
+%{_mandir}/man1/magnifier.1*
 %{_libdir}/bonobo/servers/*
 %{_datadir}/%{name}
 %{_datadir}/idl/%{name}-1.0
@@ -101,8 +102,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgnome-mag.so
 %{_libdir}/libgnome-mag.la
 %{_includedir}/%{name}-1.0
-%{_pkgconfigdir}/*
-%{_gtkdocdir}/*
+%{_pkgconfigdir}/*.pc
+%{_gtkdocdir}/%{name}
 
 %files static
 %defattr(644,root,root,755)
