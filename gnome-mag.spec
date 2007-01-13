@@ -1,19 +1,19 @@
 Summary:	GNOME Magnifier
 Summary(pl):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.14.0
+Version:	0.14.1
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-mag/0.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	012ad052da51031eca1f521942f865f2
+# Source0-md5:	2fafb09abd4e47b1b5be3200fbd36433
 URL:		http://developer.gnome.org/projects/gap/
 BuildRequires:	ORBit2-devel >= 1:2.14.4
-BuildRequires:	at-spi-devel >= 1.7.12
+BuildRequires:	at-spi-devel >= 1.7.15
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gtk+2-devel >= 2:2.10.6
+BuildRequires:	gtk+2-devel >= 2:2.10.7
 BuildRequires:	intltool >= 0.35.0
 BuildRequires:	libbonobo-devel >= 2.16.0
 BuildRequires:	libtool
@@ -29,13 +29,25 @@ GNOME magnifier.
 %description -l pl
 Lupa GNOME.
 
+%package apidocs
+Summary:	gnome-mag API documentation
+Summary(pl):	Dokumentacja API gnome-mag
+Group:		Documentation
+Requires:	gtk-doc-common
+
+%description apidocs
+gnome-mag API documentation.
+
+%description apidocs -l pl
+Dokumentacja API gnome-mag.
+
 %package devel
 Summary:	gnome-mag headers
 Summary(pl):	Pliki nag³ówkowe gnome-mag
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.4
-Requires:	gtk+2-devel >= 2:2.10.6
+Requires:	gtk+2-devel >= 2:2.10.7
 Requires:	libbonobo-devel >= 2.16.0
 
 %description devel
@@ -97,13 +109,16 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/%{name}
 %{_datadir}/idl/%{name}-1.0
 
+%files apidocs
+%defattr(644,root,root,755)
+%{_gtkdocdir}/%{name}
+
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libgnome-mag.so
 %{_libdir}/libgnome-mag.la
 %{_includedir}/%{name}-1.0
 %{_pkgconfigdir}/*.pc
-%{_gtkdocdir}/%{name}
 
 %files static
 %defattr(644,root,root,755)
