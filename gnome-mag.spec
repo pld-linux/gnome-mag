@@ -1,5 +1,5 @@
 Summary:	GNOME Magnifier
-Summary(pl):	Lupa GNOME
+Summary(pl.UTF-8):   Lupa GNOME
 Name:		gnome-mag
 Version:	0.14.1
 Release:	1
@@ -26,24 +26,24 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 GNOME magnifier.
 
-%description -l pl
+%description -l pl.UTF-8
 Lupa GNOME.
 
 %package apidocs
 Summary:	gnome-mag API documentation
-Summary(pl):	Dokumentacja API gnome-mag
+Summary(pl.UTF-8):   Dokumentacja API gnome-mag
 Group:		Documentation
 Requires:	gtk-doc-common
 
 %description apidocs
 gnome-mag API documentation.
 
-%description apidocs -l pl
+%description apidocs -l pl.UTF-8
 Dokumentacja API gnome-mag.
 
 %package devel
 Summary:	gnome-mag headers
-Summary(pl):	Pliki nag≥Ûwkowe gnome-mag
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe gnome-mag
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.4
@@ -53,19 +53,19 @@ Requires:	libbonobo-devel >= 2.16.0
 %description devel
 gnome-mag headers.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe gnome-mag.
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe gnome-mag.
 
 %package static
 Summary:	Static gnome-mag library
-Summary(pl):	Statyczna biblioteka gnome-mag
+Summary(pl.UTF-8):   Statyczna biblioteka gnome-mag
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static gnome-mag library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka gnome-mag.
 
 %prep
