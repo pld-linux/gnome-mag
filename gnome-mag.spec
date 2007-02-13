@@ -1,5 +1,5 @@
 Summary:	GNOME Magnifier
-Summary(pl.UTF-8):   Lupa GNOME
+Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
 Version:	0.14.1
 Release:	1
@@ -31,7 +31,7 @@ Lupa GNOME.
 
 %package apidocs
 Summary:	gnome-mag API documentation
-Summary(pl.UTF-8):   Dokumentacja API gnome-mag
+Summary(pl.UTF-8):	Dokumentacja API gnome-mag
 Group:		Documentation
 Requires:	gtk-doc-common
 
@@ -43,7 +43,7 @@ Dokumentacja API gnome-mag.
 
 %package devel
 Summary:	gnome-mag headers
-Summary(pl.UTF-8):   Pliki nagłówkowe gnome-mag
+Summary(pl.UTF-8):	Pliki nagłówkowe gnome-mag
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.4
@@ -58,7 +58,7 @@ Pliki nagłówkowe gnome-mag.
 
 %package static
 Summary:	Static gnome-mag library
-Summary(pl.UTF-8):   Statyczna biblioteka gnome-mag
+Summary(pl.UTF-8):	Statyczna biblioteka gnome-mag
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
