@@ -1,26 +1,26 @@
 Summary:	GNOME Magnifier
 Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.14.3
+Version:	0.14.4
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/gnome/sources/gnome-mag/0.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	db9660614f7948a12b18464683a5704f
+# Source0-md5:	1e7a2259bc241e77a3959dd438d41777
 URL:		http://developer.gnome.org/projects/gap/
 BuildRequires:	ORBit2-devel >= 1:2.14.7
-BuildRequires:	at-spi-devel >= 1.17.2
+BuildRequires:	at-spi-devel >= 1.18.1
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gnome-common >= 2.12.0
-BuildRequires:	gtk+2-devel >= 2:2.10.9
+BuildRequires:	gnome-common >= 2.18.0
+BuildRequires:	gtk+2-devel >= 2:2.10.12
 BuildRequires:	intltool >= 0.35.5
-BuildRequires:	libbonobo-devel >= 2.17.92
+BuildRequires:	libbonobo-devel >= 2.18.0
 BuildRequires:	libtool
 BuildRequires:	popt-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXfixes-devel
-Requires:	libbonobo >= 2.17.92
+Requires:	libbonobo >= 2.18.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -47,8 +47,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gnome-mag
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.7
-Requires:	gtk+2-devel >= 2:2.10.9
-Requires:	libbonobo-devel >= 2.17.92
+Requires:	gtk+2-devel >= 2:2.10.12
+Requires:	libbonobo-devel >= 2.18.0
 
 %description devel
 gnome-mag headers.
