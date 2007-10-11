@@ -18,6 +18,7 @@ BuildRequires:	intltool >= 0.36.2
 BuildRequires:	libbonobo-devel >= 2.20.0
 BuildRequires:	libtool
 BuildRequires:	popt-devel
+BuildRequires:	xorg-lib-libXcomposite-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXfixes-devel
 Requires:	libbonobo >= 2.20.0
