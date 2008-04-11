@@ -1,13 +1,14 @@
 Summary:	GNOME Magnifier
 Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.14.10
-Release:	2
+Version:	0.15.0
+Release:	1
 License:	GPL
 Group:		X11/Applications
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.14/%{name}-%{version}.tar.bz2
-# Source0-md5:	e3e498c7df873ecc7acabd52a7b4ddc7
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.15/%{name}-%{version}.tar.bz2
+# Source0-md5:	a297f2b2fae4cd0cde2a30bfacc4c380
 URL:		http://developer.gnome.org/projects/gap/
+BuildRequires:	GConf2-devel
 BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	at-spi-devel >= 1.20.0
 BuildRequires:	autoconf
