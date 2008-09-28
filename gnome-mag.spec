@@ -1,28 +1,35 @@
 Summary:	GNOME Magnifier
 Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.15.0
+Version:	0.15.4
 Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	a297f2b2fae4cd0cde2a30bfacc4c380
-URL:		http://developer.gnome.org/projects/gap/
-BuildRequires:	GConf2-devel
+# Source0-md5:	77c099335ff2d913ac813e79f127acc0
+# http://bugzilla.gnome.org/show_bug.cgi?id=554162
+Patch0:		%{name}-use-pyexecdir.patch
+URL:		http://live.gnome.org/GnomeMag
+BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
-BuildRequires:	at-spi-devel >= 1.20.0
+BuildRequires:	at-spi-devel >= 1.24.0
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gnome-common >= 2.18.0
-BuildRequires:	gtk+2-devel >= 2:2.12.0
-BuildRequires:	intltool >= 0.36.2
-BuildRequires:	libbonobo-devel >= 2.20.0
+BuildRequires:	gnome-desktop-devel >= 2.24.0
+BuildRequires:	gtk+2-devel >= 2:2.14.0
+BuildRequires:	intltool >= 0.40.0
+BuildRequires:	libbonobo-devel >= 2.24.0
+BuildRequires:	libcolorblind-devel
 BuildRequires:	libtool
-BuildRequires:	popt-devel
+BuildRequires:	pkgconfig
+BuildRequires:	python-gnome-desktop-applet
+BuildRequires:	python-gnome-devel
+BuildRequires:	python-pygtk-devel
+BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	xorg-lib-libXcomposite-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXfixes-devel
-Requires:	libbonobo >= 2.20.0
 # sr@Latn vs. sr@latin
 Conflicts:	glibc-misc < 6:2.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -51,8 +58,8 @@ Summary(pl.UTF-8):	Pliki nagłówkowe gnome-mag
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Requires:	ORBit2-devel >= 1:2.14.9
-Requires:	gtk+2-devel >= 2:2.12.0
-Requires:	libbonobo-devel >= 2.20.0
+Requires:	gtk+2-devel >= 2:2.14.0
+Requires:	libbonobo-devel >= 2.24.0
 
 %description devel
 gnome-mag headers.
@@ -63,7 +70,7 @@ Pliki nagłówkowe gnome-mag.
 %package static
 Summary:	Static gnome-mag library
 Summary(pl.UTF-8):	Statyczna biblioteka gnome-mag
-Group:		Development/Libraries
+Group:		X11/Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
@@ -72,8 +79,27 @@ Static gnome-mag library.
 %description static -l pl.UTF-8
 Statyczna biblioteka gnome-mag.
 
+%package -n gnome-applet-colorblind
+Summary:	Colorblind applet for GNOME panel
+Summary(pl.UTF-8):	Aplet colorblind dla panelu GNOME
+Group:		X11/Applications
+Requires(post,postun):	gtk+2
+Requires(post,preun):	GConf2
+Requires:	python-gnome-desktop-applet
+Requires:	python-gnome-gconf
+Requires:	python-gnome-ui
+Requires:	python-gnome-vfs
+Requires:	python-pygtk-glade
+
+%description -n gnome-applet-colorblind
+Controls image filters for colorblind people.
+
+%description -n gnome-applet-colorblind -l pl.UTF-8
+Obsługa filtrów obrazu dla osób ze ślepotą kolorów.
+
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -97,9 +123,10 @@ rm -rf $RPM_BUILD_ROOT
 
 # no *.la for orbit modules
 rm -f $RPM_BUILD_ROOT%{_libdir}/orbit-2.0/*.{la,a}
+rm -f $RPM_BUILD_ROOT%{py_sitedir}/colorblind/{keybinder,osutils}/*.{la,a}
 
-[ -d $RPM_BUILD_ROOT%{_datadir}/locale/sr@latin ] || \
-	mv -f $RPM_BUILD_ROOT%{_datadir}/locale/sr@{Latn,latin}
+%py_postclean
+
 %find_lang %{name}
 
 %clean
@@ -108,13 +135,24 @@ rm -rf $RPM_BUILD_ROOT
 %post	-p /sbin/ldconfig
 %postun	-p /sbin/ldconfig
 
+%post -n gnome-applet-colorblind
+%gconf_schema_install colorblind-applet.schemas
+%update_icon_cache hicolor
+
+%preun -n gnome-applet-colorblind
+%gconf_schema_uninstall colorblind-applet.schemas
+
+%postun -n gnome-applet-colorblind
+%update_icon_cache hicolor
+
 %files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/magnifier
 %attr(755,root,root) %{_libdir}/libgnome-mag.so.*.*.*
-%attr(755,root,root) %{_libdir}/orbit-2.0/*.so*
+%attr(755,root,root) %ghost %{_libdir}/libgnome-mag.so.2
+%attr(755,root,root) %{_libdir}/orbit-2.0/GNOME_Magnifier_module.so
 %{_mandir}/man1/magnifier.1*
-%{_libdir}/bonobo/servers/*
+%{_libdir}/bonobo/servers/*.server
 %{_datadir}/%{name}
 %{_datadir}/idl/%{name}-1.0
 
@@ -127,8 +165,26 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libgnome-mag.so
 %{_libdir}/libgnome-mag.la
 %{_includedir}/%{name}-1.0
-%{_pkgconfigdir}/*.pc
+%{_pkgconfigdir}/gnome-mag-1.0.pc
 
 %files static
 %defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_libdir}/libgnome-mag.a
+
+%files -n gnome-applet-colorblind
+%defattr(644,root,root,755)
+%dir %{_libdir}/colorblind-applet
+%attr(755,root,root) %{_libdir}/colorblind-applet/colorblind-applet
+%dir %{py_sitedir}/colorblind
+%{py_sitedir}/colorblind/*.py[co]
+%dir %{py_sitedir}/colorblind/keybinder
+%attr(755,root,root) %{py_sitedir}/colorblind/keybinder/_keybinder.so
+%{py_sitedir}/colorblind/keybinder/*.py[co]
+%dir %{py_sitedir}/colorblind/osutils
+%attr(755,root,root) %{py_sitedir}/colorblind/osutils/_osutils.so
+%{py_sitedir}/colorblind/osutils/*.py[co]
+%dir %{py_sitedir}/colorblind/ui
+%{py_sitedir}/colorblind/ui/*.py[co]
+%{_datadir}/colorblind
+%{_iconsdir}/hicolor/*/*/*
+%{_sysconfdir}/gconf/schemas/colorblind-applet.schemas
