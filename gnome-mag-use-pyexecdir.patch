@@ -1,0 +1,49 @@
+diff -urN gnome-mag-0.15.4/colorblind/keybinder/Makefile.am gnome-mag-0.15.4.new/colorblind/keybinder/Makefile.am
+--- gnome-mag-0.15.4/colorblind/keybinder/Makefile.am	2008-07-06 02:38:30.000000000 +0200
++++ gnome-mag-0.15.4.new/colorblind/keybinder/Makefile.am	2008-09-28 01:31:31.000000000 +0200
+@@ -1,6 +1,6 @@
+ INCLUDES = $(PYTHON_INCLUDES) $(CBAPPLET_CFLAGS)
+ 
+-_keybinderdir = $(pythondir)/colorblind/keybinder
++_keybinderdir = $(pyexecdir)/colorblind/keybinder
+ _keybinder_LTLIBRARIES = _keybinder.la
+ _keybinder_la_LDFLAGS = -module -avoid-version -export-symbols-regex init_keybinder
+ _keybinder_la_LIBADD = $(CBAPPLET_LIBS)
+diff -urN gnome-mag-0.15.4/colorblind/Makefile.am gnome-mag-0.15.4.new/colorblind/Makefile.am
+--- gnome-mag-0.15.4/colorblind/Makefile.am	2008-07-06 02:38:31.000000000 +0200
++++ gnome-mag-0.15.4.new/colorblind/Makefile.am	2008-09-28 01:30:59.000000000 +0200
+@@ -1,12 +1,12 @@
+ SUBDIRS = ui osutils data keybinder
+ 
+ colorblind-applet: colorblind-applet.py
+-	sed -e "s|\@PYTHONDIR\@|$(pythondir)/colorblind|" $< > $@
++	sed -e "s|\@PYTHONDIR\@|$(pyexecdir)/colorblind|" $< > $@
+ 
+ colorblindbindir = $(libdir)/colorblind-applet
+ colorblindbin_SCRIPTS = colorblind-applet
+ 
+-colorblinddir = $(pythondir)/colorblind
++colorblinddir = $(pyexecdir)/colorblind
+ 
+ colorblind_PYTHON = \
+ 	__init__.py \
+diff -urN gnome-mag-0.15.4/colorblind/osutils/Makefile.am gnome-mag-0.15.4.new/colorblind/osutils/Makefile.am
+--- gnome-mag-0.15.4/colorblind/osutils/Makefile.am	2008-07-06 02:38:25.000000000 +0200
++++ gnome-mag-0.15.4.new/colorblind/osutils/Makefile.am	2008-09-28 01:31:22.000000000 +0200
+@@ -1,6 +1,6 @@
+ INCLUDES = $(PYTHON_INCLUDES) $(CBAPPLET_CFLAGS)
+ 
+-_osutilsdir = $(pythondir)/colorblind/osutils
++_osutilsdir = $(pyexecdir)/colorblind/osutils
+ _osutils_LTLIBRARIES = _osutils.la
+ _osutils_la_LDFLAGS = -module -avoid-version init_osutils
+ _osutils_la_LIBADD = $(CBAPPLET_LIBS)
+diff -urN gnome-mag-0.15.4/colorblind/ui/Makefile.am gnome-mag-0.15.4.new/colorblind/ui/Makefile.am
+--- gnome-mag-0.15.4/colorblind/ui/Makefile.am	2008-07-06 02:38:31.000000000 +0200
++++ gnome-mag-0.15.4.new/colorblind/ui/Makefile.am	2008-09-28 01:31:11.000000000 +0200
+@@ -1,4 +1,4 @@
+-colorblinddir = $(pythondir)/colorblind/ui
++colorblinddir = $(pyexecdir)/colorblind/ui
+ colorblind_PYTHON = \
+ 	About.py \
+ 	ColorblindPreferencesUI.py \
