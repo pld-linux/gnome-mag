@@ -82,7 +82,7 @@ Statyczna biblioteka gnome-mag.
 %package -n gnome-applet-colorblind
 Summary:	Colorblind applet for GNOME panel
 Summary(pl.UTF-8):	Aplet colorblind dla panelu GNOME
-Group:		X11/Applications
+Group:		X11/Applications/Accessibility
 Requires(post,postun):	gtk+2
 Requires(post,preun):	GConf2
 Requires:	python-gnome-desktop-applet
