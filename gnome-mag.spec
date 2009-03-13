@@ -1,12 +1,12 @@
 Summary:	GNOME Magnifier
 Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.15.4
-Release:	2
+Version:	0.15.5
+Release:	1
 License:	GPL
 Group:		X11/Applications
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	77c099335ff2d913ac813e79f127acc0
+# Source0-md5:	8d380056b90619f2e0b86e785836fbc4
 # http://bugzilla.gnome.org/show_bug.cgi?id=554162
 Patch0:		%{name}-use-pyexecdir.patch
 URL:		http://live.gnome.org/GnomeMag
