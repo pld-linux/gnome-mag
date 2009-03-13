@@ -4,7 +4,7 @@ Name:		gnome-mag
 Version:	0.15.5
 Release:	1
 License:	GPL
-Group:		X11/Applications
+Group:		X11/Applications/Accessibility
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.15/%{name}-%{version}.tar.bz2
 # Source0-md5:	8d380056b90619f2e0b86e785836fbc4
 # http://bugzilla.gnome.org/show_bug.cgi?id=554162
