@@ -1,12 +1,12 @@
 Summary:	GNOME Magnifier
 Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.15.5
+Version:	0.15.7
 Release:	1
 License:	GPL
 Group:		X11/Applications/Accessibility
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	8d380056b90619f2e0b86e785836fbc4
+# Source0-md5:	40eb26385e3225ac5cb1eab87488cfc3
 # http://bugzilla.gnome.org/show_bug.cgi?id=554162
 Patch0:		%{name}-use-pyexecdir.patch
 URL:		http://live.gnome.org/GnomeMag
@@ -27,6 +27,7 @@ BuildRequires:	python-gnome-desktop-applet
 BuildRequires:	python-gnome-devel
 BuildRequires:	python-pygtk-devel
 BuildRequires:	rpmbuild(macros) >= 1.311
+BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libXcomposite-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXfixes-devel
@@ -100,6 +101,9 @@ Obsługa filtrów obrazu dla osób ze ślepotą kolorów.
 %prep
 %setup -q
 %patch0 -p1
+
+rm -f po/ca@valencia.po
+sed -i -e 's/ca@valencia//' po/LINGUAS
 
 %build
 %{__libtoolize}
