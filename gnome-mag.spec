@@ -15,6 +15,8 @@ BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	at-spi-devel >= 1.24.0
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	doxygen
+BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.18.0
 BuildRequires:	gnome-desktop-devel >= 2.24.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
@@ -26,6 +28,7 @@ BuildRequires:	pkgconfig
 BuildRequires:	python-gnome-desktop-applet
 BuildRequires:	python-gnome-devel
 BuildRequires:	python-pygtk-devel
+BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
 BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libXcomposite-devel
