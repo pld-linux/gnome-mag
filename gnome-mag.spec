@@ -1,14 +1,12 @@
 Summary:	GNOME Magnifier
 Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.15.7
+Version:	0.16.1
 Release:	1
 License:	GPL
 Group:		X11/Applications/Accessibility
-Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.15/%{name}-%{version}.tar.bz2
-# Source0-md5:	40eb26385e3225ac5cb1eab87488cfc3
-# http://bugzilla.gnome.org/show_bug.cgi?id=554162
-Patch0:		%{name}-use-pyexecdir.patch
+Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.16/%{name}-%{version}.tar.bz2
+# Source0-md5:	bbe177dadfd64c071b5670956ed703ae
 URL:		http://live.gnome.org/GnomeMag
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
@@ -103,10 +101,9 @@ Obsługa filtrów obrazu dla osób ze ślepotą kolorów.
 
 %prep
 %setup -q
-%patch0 -p1
 
-rm -f po/ca@valencia.po
-sed -i -e 's/ca@valencia//' po/LINGUAS
+rm -f po/en@shaw.po
+sed -i -e 's/en@shaw//' po/LINGUAS
 
 %build
 %{__libtoolize}
@@ -160,6 +157,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/orbit-2.0/GNOME_Magnifier_module.so
 %{_mandir}/man1/magnifier.1*
 %{_libdir}/bonobo/servers/*.server
+%{_datadir}/dbus-1/services/org.freedesktop.gnome.Magnifier.service
 %{_datadir}/%{name}
 %{_datadir}/idl/%{name}-1.0
 
