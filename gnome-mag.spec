@@ -1,12 +1,12 @@
 Summary:	GNOME Magnifier
 Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
-Version:	0.16.1
-Release:	2
+Version:	0.16.2
+Release:	1
 License:	GPL
 Group:		X11/Applications/Accessibility
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.16/%{name}-%{version}.tar.bz2
-# Source0-md5:	bbe177dadfd64c071b5670956ed703ae
+# Source0-md5:	0a6323f714df163a49cd7c1c3cac269b
 URL:		http://live.gnome.org/GnomeMag
 BuildRequires:	GConf2-devel >= 2.24.0
 BuildRequires:	ORBit2-devel >= 1:2.14.9
