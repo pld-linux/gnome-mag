@@ -13,6 +13,7 @@ BuildRequires:	ORBit2-devel >= 1:2.14.9
 BuildRequires:	at-spi-devel >= 1.24.0
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	dbus-glib-devel
 BuildRequires:	doxygen
 BuildRequires:	gettext-devel
 BuildRequires:	gnome-common >= 2.18.0
