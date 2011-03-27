@@ -29,7 +29,6 @@ BuildRequires:	python-gnome-devel
 BuildRequires:	python-pygtk-devel
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.311
-BuildRequires:	sed >= 4.0
 BuildRequires:	xorg-lib-libXcomposite-devel
 BuildRequires:	xorg-lib-libXdamage-devel
 BuildRequires:	xorg-lib-libXfixes-devel
@@ -105,9 +104,6 @@ Obsługa filtrów obrazu dla osób ze ślepotą kolorów.
 %prep
 %setup -q
 
-rm -f po/en@shaw.po
-sed -i -e 's/en@shaw//' po/LINGUAS
-
 %build
 %{__libtoolize}
 %{__glib_gettextize}
@@ -129,8 +125,8 @@ rm -rf $RPM_BUILD_ROOT
 	referencedir=%{_gtkdocdir}/%{name}
 
 # no *.la for orbit modules
-rm -f $RPM_BUILD_ROOT%{_libdir}/orbit-2.0/*.{la,a}
-rm -f $RPM_BUILD_ROOT%{py_sitedir}/colorblind/{keybinder,osutils}/*.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{_libdir}/orbit-2.0/*.{la,a}
+%{__rm} $RPM_BUILD_ROOT%{py_sitedir}/colorblind/{keybinder,osutils}/*.{la,a}
 
 %py_postclean
 
