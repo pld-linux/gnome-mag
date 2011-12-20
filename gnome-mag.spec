@@ -2,7 +2,7 @@ Summary:	GNOME Magnifier
 Summary(pl.UTF-8):	Lupa GNOME
 Name:		gnome-mag
 Version:	0.16.2
-Release:	3
+Release:	4
 License:	GPL
 Group:		X11/Applications/Accessibility
 Source0:	http://ftp.gnome.org/pub/GNOME/sources/gnome-mag/0.16/%{name}-%{version}.tar.bz2
