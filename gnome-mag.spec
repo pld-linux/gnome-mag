@@ -15,7 +15,7 @@ BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	dbus-glib-devel
 BuildRequires:	doxygen
-BuildRequires:	gettext-devel
+BuildRequires:	gettext-tools
 BuildRequires:	gnome-common >= 2.18.0
 BuildRequires:	gnome-desktop-devel >= 2.24.0
 BuildRequires:	gtk+2-devel >= 2:2.14.0
